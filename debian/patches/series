@@ -1,0 +1,3 @@
+patch-README-for-Debian.patch
+cross.patch
+makefile-Use-CPPFLAGS_FOR_BUILD-CXXFLAGS_FOR_BUILD.patch

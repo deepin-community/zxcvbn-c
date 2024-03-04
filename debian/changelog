@@ -1,5 +1,79 @@
-template-repository (1.0-1) unstable; urgency=medium
+zxcvbn-c (2.5+dfsg-2) unstable; urgency=medium
 
-  * Initial release
+  * makefile: Use CPPFLAGS_FOR_BUILD & CXXFLAGS_FOR_BUILD (Closes: #1060268).
+    Thanks to Helmut Grohne for the patch.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Sean Whitton <spwhitton@spwhitton.name>  Mon, 26 Feb 2024 11:22:14 +0800
+
+zxcvbn-c (2.5+dfsg-1) unstable; urgency=medium
+
+  * Update to new upstream version 2.5+dfsg.
+  * Drop no-upstream-changelog overrides.
+    Lintian tag no longer exists.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Sun, 10 Apr 2022 13:45:01 -0700
+
+zxcvbn-c (2.4+dfsg-2) unstable; urgency=medium
+
+  * Add missing dependency in Makefile (Closes: #908381).
+    Thank you to Adrian Bunk for the patch.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Sun, 09 Sep 2018 08:28:00 -0700
+
+zxcvbn-c (2.4+dfsg-1) unstable; urgency=medium
+
+  * Update to new upstream version 2.4+dfsg.
+  * Add d/copyright stanza for test-internals.c.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Sat, 08 Sep 2018 11:52:22 -0700
+
+zxcvbn-c (2.3+dfsg-2) unstable; urgency=medium
+
+  * Fix crossbuilding by using the build architecture compiler for dictgen
+    (Closes: #894020).
+    Thanks to Helmut Grohne for the report and patch.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Mon, 26 Mar 2018 14:54:28 -0700
+
+zxcvbn-c (2.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #858108).
+  * Update d/copyright for upstream's change to the Expat license.
+  * Bump copyright years.
+  * Bump standards version to 4.0.0 (no changes required).
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Sun, 25 Jun 2017 06:58:17 +0100
+
+zxcvbn-c (2.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+    This release introduces an ABI break, and upstream neglected to bump
+    the SONAME.  For the following reasons I have not patched in a SONAME
+    bump:
+    - libzxcvbn has not yet been included in a Debian stable release, so
+      there are no user binaries linked against the packaged libzxcvbn on
+      Debian stable systems
+    - No packages in Debian require a binNMU due to this ABI break, so
+      there is no transition work to perform that would require a new SONAME
+    - A SONAME delta with upstream is cumbersome.
+  * Update d/copyright for changes to words-*.txt files.
+  * Add a d/copyright stanza for the upstream makefile.
+  * Add Files-Excluded: field to d/copyright.
+  * Add debian/missing-sources & debian/upstream/scripts
+    - Update d/copyright accordingly
+    - Add explanatory text to README.source
+  * Add explanatory text to README.source regarding DFSG repacking.
+  * Drop patches merged upstream:
+    - add-another-missing-file-to-clean-target.patch
+    - standardise-makefile-variables.patch
+  * Refresh patch-README-for-Debian.patch.
+  * Standardise watch file in accordance with uscan(1) for GitHub projects.
+  * Drop unused spelling-error-in-binary Lintian override for libzxcvbn0.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Tue, 29 Nov 2016 17:47:45 -0700
+
+zxcvbn-c (0.20160925-1) unstable; urgency=medium
+
+  * Initial release (Closes: #838492).
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Wed, 28 Sep 2016 09:41:48 -0700

@@ -1,0 +1,29 @@
+From: Helmut Grohne <helmut@subdivi.de>
+Date: Sun, 25 Mar 2018 13:36:47 +0200
+Subject: fix crossbuilding zxcvbn-c
+
+---
+ makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 399bccc..5e8ea98 100644
+--- a/makefile
++++ b/makefile
+@@ -5,6 +5,7 @@ CXXFLAGS ?= -O2 -Wall -Wextra
+ CC ?= gcc
+ AR ?= ar
+ CXX ?= g++
++CXX_FOR_BUILD ?= $(CXX)
+ 
+ # need zxcvbn.h prior to package installation
+ CPPFLAGS += -I.
+@@ -61,7 +62,7 @@ dict-crc.h: dictgen $(WORDS)
+ 	./dictgen -b -o zxcvbn.dict -h dict-crc.h $(WORDS)
+ 
+ dictgen: dict-generate.cpp makefile
+-	$(CXX) $(CPPFLAGS) -std=c++11 $(CXXFLAGS) \
++	$(CXX_FOR_BUILD) $(CPPFLAGS) -std=c++11 $(CXXFLAGS) \
+ 		-o dictgen dict-generate.cpp $(LDFLAGS)
+ 
+ test-c++inline: test.c zxcvbn-c++inline.o

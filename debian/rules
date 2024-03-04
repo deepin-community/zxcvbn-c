@@ -1,4 +1,12 @@
 #!/usr/bin/make -f
 
+# enable most hardening, but not PIE -- while we build some binary
+# executables in order to run the test suite, we only install
+# non-executable libraries
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all,-pie
+
+-include /usr/share/dpkg/buildtools.mk
+export CXX_FOR_BUILD ?= g++
+
 %:
 	dh $@
