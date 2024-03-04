@@ -1,15 +1,34 @@
-Source: template-repository
-Section: unknown
+Source: zxcvbn-c
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Sean Whitton <spwhitton@spwhitton.name>
+Build-Depends: debhelper (>= 10), dh-exec (>= 0.3)
+Standards-Version: 4.0.0
+Section: libs
+Homepage: https://github.com/tsyrogit/zxcvbn-c
+Vcs-Git: https://git.spwhitton.name/zxcvbn-c
+Vcs-Browser: https://git.spwhitton.name/zxcvbn-c
 
-Package: template-repository
+Package: libzxcvbn-dev
+Section: libdevel
 Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libzxcvbn0 (= ${binary:Version}), ${misc:Depends}
+Description: password strength estimation library - development files
+ This library is a C/C++ implementation of the zxcvbn password
+ strength estimator.  It provides functions to rate password strength,
+ by comparing the password to several word lists, including English
+ first and last names.
+ .
+ This package includes the development headers.
+
+Package: libzxcvbn0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: password strength estimation library
+ This library is a C/C++ implementation of the zxcvbn password
+ strength estimator.  It provides functions to rate password strength,
+ by comparing the password to several word lists, including English
+ first and last names.

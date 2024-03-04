@@ -1,0 +1,31 @@
+From: Helmut Grohne <helmut@subdivi.de>
+Date: Mon, 8 Jan 2024 08:09:08 +0100
+Subject: makefile: Use CPPFLAGS_FOR_BUILD & CXXFLAGS_FOR_BUILD
+
+---
+ makefile | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 5e8ea98..5a5a130 100644
+--- a/makefile
++++ b/makefile
+@@ -10,6 +10,9 @@ CXX_FOR_BUILD ?= $(CXX)
+ # need zxcvbn.h prior to package installation
+ CPPFLAGS += -I.
+ 
++CPPFLAGS_FOR_BUILD ?= $(CPPFLAGS)
++CXXFLAGS_FOR_BUILD ?= $(CXXFLAGS)
++
+ # library metadata
+ TARGET_LIB = libzxcvbn.so.0.0.0
+ SONAME = libzxcvbn.so.0
+@@ -62,7 +65,7 @@ dict-crc.h: dictgen $(WORDS)
+ 	./dictgen -b -o zxcvbn.dict -h dict-crc.h $(WORDS)
+ 
+ dictgen: dict-generate.cpp makefile
+-	$(CXX_FOR_BUILD) $(CPPFLAGS) -std=c++11 $(CXXFLAGS) \
++	$(CXX_FOR_BUILD) $(CPPFLAGS_FOR_BUILD) -std=c++11 $(CXXFLAGS_FOR_BUILD) \
+ 		-o dictgen dict-generate.cpp $(LDFLAGS)
+ 
+ test-c++inline: test.c zxcvbn-c++inline.o

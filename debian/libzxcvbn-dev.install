@@ -1,0 +1,4 @@
+#!/usr/bin/dh-exec
+zxcvbn.h usr/include/
+libzxcvbn.so usr/lib/${DEB_HOST_MULTIARCH}/
+libzxcvbn.a usr/lib/${DEB_HOST_MULTIARCH}/
